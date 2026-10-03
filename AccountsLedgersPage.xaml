@@ -1,0 +1,8 @@
+<Page x:Class="MUICIN_INVENT_V3.AccountsLedgersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="AccountsLedgersPage">
+    <Grid>
+        <TextBlock Text="Accounts &amp; Ledgers" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" />
+    </Grid>
+</Page>

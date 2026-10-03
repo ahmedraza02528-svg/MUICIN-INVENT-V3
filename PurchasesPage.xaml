@@ -1,0 +1,190 @@
+﻿<Page x:Class="MUICIN_INVENT_V3.PurchasesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="PurchasesPage"
+      Background="#F5F7FB">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- HEADER -->
+            <Grid Grid.Row="0">
+                <StackPanel>
+                    <TextBlock Text="Purchases"
+                               FontSize="32"
+                               FontWeight="Bold"
+                               Foreground="#18202F"/>
+                    <TextBlock Text="Manage suppliers, purchase orders and incoming stock."
+                               Margin="0,6,0,0"
+                               FontSize="14"
+                               Foreground="#6B7280"/>
+                </StackPanel>
+
+                <Button Content="+ New Purchase"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Width="150"
+                        Height="42"
+                        Background="#2563EB"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontWeight="SemiBold"
+                        Click="NewPurchase_Click"/>
+            </Grid>
+
+            <!-- SUMMARY CARDS -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0"
+                        Background="White"
+                        CornerRadius="12"
+                        Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="TOTAL PURCHASES"
+                                   Foreground="#6B7280"
+                                   FontSize="12"/>
+                        <TextBlock Text="Rs. 248,500"
+                                   FontSize="25"
+                                   FontWeight="Bold"
+                                   Margin="0,8,0,0"/>
+                        <TextBlock Text="This month"
+                                   Foreground="#16A34A"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="2"
+                        Background="White"
+                        CornerRadius="12"
+                        Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="PURCHASE ORDERS"
+                                   Foreground="#6B7280"
+                                   FontSize="12"/>
+                        <TextBlock Text="18"
+                                   FontSize="25"
+                                   FontWeight="Bold"
+                                   Margin="0,8,0,0"/>
+                        <TextBlock Text="Total orders"
+                                   Foreground="#6B7280"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="4"
+                        Background="White"
+                        CornerRadius="12"
+                        Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="PENDING"
+                                   Foreground="#6B7280"
+                                   FontSize="12"/>
+                        <TextBlock Text="4"
+                                   FontSize="25"
+                                   FontWeight="Bold"
+                                   Margin="0,8,0,0"/>
+                        <TextBlock Text="Awaiting stock"
+                                   Foreground="#D97706"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="6"
+                        Background="White"
+                        CornerRadius="12"
+                        Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="SUPPLIERS"
+                                   Foreground="#6B7280"
+                                   FontSize="12"/>
+                        <TextBlock Text="12"
+                                   FontSize="25"
+                                   FontWeight="Bold"
+                                   Margin="0,8,0,0"/>
+                        <TextBlock Text="Active suppliers"
+                                   Foreground="#6B7280"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- PURCHASE LIST -->
+            <Border Grid.Row="4"
+                    Background="White"
+                    CornerRadius="12"
+                    Padding="20">
+
+                <StackPanel>
+                    <Grid Margin="0,0,0,20">
+                        <TextBlock Text="Purchase Orders"
+                                   FontSize="20"
+                                   FontWeight="SemiBold"/>
+
+                        <TextBox Width="280"
+                                 Height="38"
+                                 HorizontalAlignment="Right"
+                                 VerticalContentAlignment="Center"
+                                 Padding="10,0"
+                                 Text="Search purchase..."
+                                 Foreground="#6B7280"/>
+                    </Grid>
+
+                    <DataGrid AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              HeadersVisibility="Column"
+                              GridLinesVisibility="Horizontal"
+                              BorderThickness="0"
+                              RowHeight="46"
+                              ColumnHeaderHeight="42">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="PURCHASE ID"
+                                                Binding="{Binding PurchaseId}"
+                                                Width="*"/>
+
+                            <DataGridTextColumn Header="SUPPLIER"
+                                                Binding="{Binding Supplier}"
+                                                Width="2*"/>
+
+                            <DataGridTextColumn Header="DATE"
+                                                Binding="{Binding Date}"
+                                                Width="*"/>
+
+                            <DataGridTextColumn Header="ITEMS"
+                                                Binding="{Binding Items}"
+                                                Width="*"/>
+
+                            <DataGridTextColumn Header="TOTAL"
+                                                Binding="{Binding Total}"
+                                                Width="*"/>
+
+                            <DataGridTextColumn Header="STATUS"
+                                                Binding="{Binding Status}"
+                                                Width="*"/>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </ScrollViewer>
+</Page>

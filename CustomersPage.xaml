@@ -1,0 +1,203 @@
+<Page x:Class="MUICIN_INVENT_V3.CustomersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="CustomersPage"
+      Background="#F5F7FB">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="30">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- HEADER -->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock Text="Customers"
+                               FontSize="30"
+                               FontWeight="Bold"
+                               Foreground="#1F2937"/>
+
+                    <TextBlock Text="Manage customers, balances and order history"
+                               Margin="0,6,0,0"
+                               FontSize="14"
+                               Foreground="#6B7280"/>
+                </StackPanel>
+
+                <Button Grid.Column="1"
+                        Content="+  Add Customer"
+                        Width="150"
+                        Height="42"
+                        Background="#2563EB"
+                        Foreground="White"
+                        FontWeight="SemiBold"
+                        BorderThickness="0"
+                        Click="AddCustomer_Click"/>
+            </Grid>
+
+            <!-- SUMMARY CARDS -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0"
+                        Background="White"
+                        Padding="20"
+                        CornerRadius="8">
+                    <StackPanel>
+                        <TextBlock Text="TOTAL CUSTOMERS"
+                                   Foreground="#6B7280"
+                                   FontSize="12"/>
+                        <TextBlock x:Name="TotalCustomersText" Text="0"
+                                   Margin="0,8,0,0"
+                                   FontSize="26"
+                                   FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="2"
+                        Background="White"
+                        Padding="20"
+                        CornerRadius="8">
+                    <StackPanel>
+                        <TextBlock Text="ACTIVE CUSTOMERS"
+                                   Foreground="#6B7280"
+                                   FontSize="12"/>
+                        <TextBlock x:Name="ActiveCustomersText" Text="0"
+                                   Margin="0,8,0,0"
+                                   FontSize="26"
+                                   FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="4"
+                        Background="White"
+                        Padding="20"
+                        CornerRadius="8">
+                    <StackPanel>
+                        <TextBlock Text="TOTAL ORDERS"
+                                   Foreground="#6B7280"
+                                   FontSize="12"/>
+                        <TextBlock x:Name="TotalOrdersText" Text="0"
+                                   Margin="0,8,0,0"
+                                   FontSize="26"
+                                   FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="6"
+                        Background="White"
+                        Padding="20"
+                        CornerRadius="8">
+                    <StackPanel>
+                        <TextBlock Text="RECEIVABLE"
+                                   Foreground="#6B7280"
+                                   FontSize="12"/>
+                        <TextBlock x:Name="ReceivableText" Text="Rs. 0"
+                                   Margin="0,8,0,0"
+                                   FontSize="26"
+                                   FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- SEARCH -->
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="320"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="SearchTextBox" Height="40"
+                         Padding="12,8"
+                         FontSize="14"
+                         Text=""
+                         TextChanged="SearchTextBox_TextChanged"
+                         />
+            </Grid>
+
+            <!-- CUSTOMER TABLE -->
+            <Border Grid.Row="6"
+                    Background="White"
+                    CornerRadius="8"
+                    Padding="15">
+
+            <DataGrid x:Name="CustomersDataGrid" AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          HeadersVisibility="Column"
+                          GridLinesVisibility="Horizontal"
+                          BorderThickness="0"
+                          RowHeight="42">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="Customer ID"
+                                            Binding="{Binding CustomerId}"
+                                            Width="110"/>
+
+                        <DataGridTextColumn Header="Customer Name"
+                                            Binding="{Binding CustomerName}"
+                                            Width="2*"/>
+
+                        <DataGridTextColumn Header="Phone"
+                                            Width="*"/>
+
+                        <DataGridTextColumn Header="City"
+                                            Width="*"/>
+
+                        <DataGridTextColumn Header="Total Orders"
+                                            Binding="{Binding TotalOrders}"
+                                            Width="*"/>
+
+                        <DataGridTextColumn Header="Total Spent"
+                                            Binding="{Binding TotalSpent}"
+                                            Width="*"/>
+
+                        <DataGridTextColumn Header="Balance"
+                                            Binding="{Binding OutstandingBalance}"
+                                            Width="*"/>
+
+                        <DataGridTextColumn Header="Status"
+                                            Binding="{Binding Status}"
+                                            Width="*"/>
+
+                        <DataGridTemplateColumn Header="Actions" Width="220">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Button Content="View" Margin="2" Padding="6,2" Click="ViewCustomer_Click"/>
+                                        <Button Content="Edit" Margin="2" Padding="6,2" Click="EditCustomer_Click"/>
+                                        <Button Content="Delete" Margin="2" Padding="6,2" Click="DeleteCustomer_Click"/>
+                                        <Button Content="Statement" Margin="2" Padding="6,2" Click="StatementCustomer_Click"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </Border>
+
+        </Grid>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,236 @@
+<Window x:Class="MUICIN_INVENT_V3.AddCustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Customer"
+        Height="720"
+        Width="850"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#F5F7FB">
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- HEADER -->
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="Add New Customer"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="#1F2937"/>
+
+            <TextBlock Text="Enter customer contact and account information"
+                       Margin="0,5,0,0"
+                       FontSize="14"
+                       Foreground="#6B7280"/>
+        </StackPanel>
+
+        <!-- FORM -->
+        <Border Grid.Row="2"
+                Background="White"
+                CornerRadius="10"
+                Padding="25">
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="18"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="18"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="18"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="18"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="18"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- CUSTOMER NAME -->
+                    <StackPanel Grid.Row="0" Grid.Column="0">
+                        <TextBlock Text="Customer / Business Name *"
+                                   FontWeight="SemiBold"/>
+                        <TextBox x:Name="CustomerNameTextBox"
+                                 Height="38"
+                                 Margin="0,7,0,0"
+                                 Padding="10,7"/>
+                    </StackPanel>
+
+                    <!-- CONTACT PERSON -->
+                    <StackPanel Grid.Row="0" Grid.Column="2">
+                        <TextBlock Text="Contact Person"
+                                   FontWeight="SemiBold"/>
+                        <TextBox x:Name="ContactPersonTextBox"
+                                 Height="38"
+                                 Margin="0,7,0,0"
+                                 Padding="10,7"/>
+                    </StackPanel>
+
+                    <!-- PHONE -->
+                    <StackPanel Grid.Row="2" Grid.Column="0">
+                        <TextBlock Text="Phone *"
+                                   FontWeight="SemiBold"/>
+                        <TextBox x:Name="PhoneTextBox"
+                                 Height="38"
+                                 Margin="0,7,0,0"
+                                 Padding="10,7"/>
+                    </StackPanel>
+
+                    <!-- EMAIL -->
+                    <StackPanel Grid.Row="2" Grid.Column="2">
+                        <TextBlock Text="Email"
+                                   FontWeight="SemiBold"/>
+                        <TextBox x:Name="EmailTextBox"
+                                 Height="38"
+                                 Margin="0,7,0,0"
+                                 Padding="10,7"/>
+                    </StackPanel>
+
+                    <!-- CITY -->
+                    <StackPanel Grid.Row="4" Grid.Column="0">
+                        <TextBlock Text="City"
+                                   FontWeight="SemiBold"/>
+                        <TextBox x:Name="CityTextBox"
+                                 Height="38"
+                                 Margin="0,7,0,0"
+                                 Padding="10,7"/>
+                    </StackPanel>
+
+                    <!-- NTN -->
+                    <StackPanel Grid.Row="4" Grid.Column="2">
+                        <TextBlock Text="NTN / Tax Number"
+                                   FontWeight="SemiBold"/>
+                        <TextBox x:Name="TaxNumberTextBox"
+                                 Height="38"
+                                 Margin="0,7,0,0"
+                                 Padding="10,7"/>
+                    </StackPanel>
+
+                    <!-- OPENING BALANCE -->
+                    <StackPanel Grid.Row="6" Grid.Column="0">
+                        <TextBlock Text="Opening Balance (Rs.)"
+                                   FontWeight="SemiBold"/>
+                        <TextBox x:Name="OpeningBalanceTextBox"
+                                 Height="38"
+                                 Margin="0,7,0,0"
+                                 Padding="10,7"
+                                 Text="0"/>
+                    </StackPanel>
+
+                    <!-- CREDIT LIMIT -->
+                    <StackPanel Grid.Row="6" Grid.Column="2">
+                        <TextBlock Text="Credit Limit (Rs.)"
+                                   FontWeight="SemiBold"/>
+                        <TextBox x:Name="CreditLimitTextBox"
+                                 Height="38"
+                                 Margin="0,7,0,0"
+                                 Padding="10,7"
+                                 Text="0"/>
+                    </StackPanel>
+
+                    <!-- PAYMENT TERMS -->
+                    <StackPanel Grid.Row="8" Grid.Column="0">
+                        <TextBlock Text="Payment Terms"
+                                   FontWeight="SemiBold"/>
+
+                        <ComboBox x:Name="PaymentTermsComboBox"
+                                  Height="38"
+                                  Margin="0,7,0,0"
+                                  Padding="8">
+                            <ComboBoxItem Content="Cash"/>
+                            <ComboBoxItem Content="7 Days"/>
+                            <ComboBoxItem Content="15 Days"/>
+                            <ComboBoxItem Content="30 Days"/>
+                            <ComboBoxItem Content="45 Days"/>
+                            <ComboBoxItem Content="60 Days"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- ADDRESS -->
+                    <StackPanel Grid.Row="8"
+                                Grid.Column="2"
+                                Grid.ColumnSpan="1">
+                        <TextBlock Text="Address"
+                                   FontWeight="SemiBold"/>
+
+                        <TextBox x:Name="AddressTextBox"
+                                 Height="60"
+                                 Margin="0,7,0,0"
+                                 Padding="10"
+                                 TextWrapping="Wrap"
+                                 AcceptsReturn="True"/>
+                    </StackPanel>
+
+                    <!-- NOTES -->
+                    <StackPanel Grid.Row="10"
+                                Grid.Column="0">
+                        <TextBlock Text="Notes"
+                                   FontWeight="SemiBold"/>
+
+                        <TextBox x:Name="NotesTextBox"
+                                 Height="60"
+                                 Margin="0,7,0,0"
+                                 Padding="10"
+                                 TextWrapping="Wrap"
+                                 AcceptsReturn="True"/>
+                    </StackPanel>
+
+                    <!-- STATUS -->
+                    <StackPanel Grid.Row="10"
+                                Grid.Column="2">
+                        <TextBlock Text="Status"
+                                   FontWeight="SemiBold"/>
+
+                        <ComboBox x:Name="StatusComboBox"
+                                  Height="38"
+                                  Margin="0,7,0,0"
+                                  Padding="8"
+                                  SelectedIndex="0">
+                            <ComboBoxItem Content="Active"/>
+                            <ComboBoxItem Content="Inactive"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                </Grid>
+            </ScrollViewer>
+        </Border>
+
+        <!-- BUTTONS -->
+        <StackPanel Grid.Row="4"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+
+            <Button Content="Cancel"
+                    Width="110"
+                    Height="42"
+                    Margin="0,0,12,0"
+                    Background="#E5E7EB"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    Click="Cancel_Click"/>
+
+            <Button Content="Save Customer"
+                    Width="145"
+                    Height="42"
+                    Background="#2563EB"
+                    Foreground="White"
+                    BorderThickness="0"
+                    FontWeight="SemiBold"
+                    Cursor="Hand"
+                    Click="SaveCustomer_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -1,0 +1,590 @@
+﻿<Window x:Class="MUICIN_INVENT_V3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MUICIN Inventory V3"
+        Width="1500"
+        Height="900"
+        MinWidth="1200"
+        MinHeight="720"
+        WindowStartupLocation="CenterScreen"
+        Background="#F4F7FB">
+
+    <Window.Resources>
+
+        <!-- SIDEBAR BUTTON -->
+        <Style x:Key="MenuButton" TargetType="Button">
+            <Setter Property="Foreground" Value="#C9D5E3"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="46"/>
+            <Setter Property="Margin" Value="10,2"/>
+            <Setter Property="Padding" Value="16,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="8">
+                            <ContentPresenter
+                                Margin="{TemplateBinding Padding}"
+                                VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- CARD -->
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="BorderBrush" Value="#E4EAF1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="18"/>
+        </Style>
+
+        <!-- ACTION BUTTON -->
+        <Style x:Key="ActionButton" TargetType="Button">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Background" Value="#1677E8"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="235"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <Border Grid.Column="0"
+                Background="#102D46">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="105"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="85"/>
+                </Grid.RowDefinitions>
+
+                <!-- LOGO -->
+                <StackPanel Margin="22,20,10,10">
+
+                    <TextBlock Text="MUICIN"
+                               Foreground="White"
+                               FontWeight="Bold"
+                               FontSize="25"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Inventory"
+                                   Foreground="#D8E5EF"
+                                   FontSize="15"/>
+
+                        <Border Background="#E62B2B"
+                                CornerRadius="4"
+                                Padding="5,2"
+                                Margin="7,0,0,0">
+                            <TextBlock Text="V3"
+                                       Foreground="White"
+                                       FontWeight="Bold"/>
+                        </Border>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <!-- NAVIGATION -->
+                <ScrollViewer Grid.Row="1"
+                              VerticalScrollBarVisibility="Auto">
+
+                    <StackPanel>
+
+                        <Button Style="{StaticResource MenuButton}"
+                                Background="#1677E8"
+                                Foreground="White"
+                                Content="▣   Dashboard"/>
+
+                        <Button Style="{StaticResource MenuButton}"
+                                Content="▦   Inventory" Click="Inventory_Click"/>
+
+                        <Button Style="{StaticResource MenuButton}"
+                                Content="▤   Purchases" Click="Purchases_Click"/>
+
+                        <Button Style="{StaticResource MenuButton}"
+                                Content="🛒   Sales/POS" Click="Sales_Click"/>
+
+                        <Button Style="{StaticResource MenuButton}"
+                                Content="👥   Customers" Click="Customers_Click"/>
+
+                        <Button Style="{StaticResource MenuButton}"
+                                Content="▣   Suppliers" Click="Suppliers_Click"/>
+
+                        <Button Style="{StaticResource MenuButton}"
+                                Content="₹   Accounts &amp; Ledgers" Click="AccountsLedgers_Click"/>
+
+
+                        <Button Style="{StaticResource MenuButton}"
+                                Content="▥   Reports &amp; Analytics" Click="ReportsAnalytics_Click"/>
+
+                        <Button Style="{StaticResource MenuButton}"
+                                Content="👤   Employees" Click="Employees_Click"/>
+
+                        <Button Style="{StaticResource MenuButton}"
+                                Content="★   Partners" Click="Partners_Click"/>
+
+                        <Button Style="{StaticResource MenuButton}"
+                                Content="✓   Tasks &amp; Work" Click="TasksWork_Click"/>
+
+                        <Button Style="{StaticResource MenuButton}"
+                                Content="⌖   Locations" Click="Locations_Click"/>
+
+                        <Button Style="{StaticResource MenuButton}"
+                                Content="⚙   Settings" Click="Settings_Click"/>
+                    </StackPanel>
+
+                </ScrollViewer>
+
+                <!-- USER -->
+                <Border Grid.Row="2"
+                        BorderBrush="#28485F"
+                        BorderThickness="0,1,0,0"
+                        Padding="18">
+
+                    <StackPanel>
+
+                        <TextBlock Text="●  Administrator"
+                                   Foreground="White"
+                                   FontWeight="SemiBold"/>
+
+                        <TextBlock Text="Online • Partner Access"
+                                   Foreground="#79E09B"
+                                   FontSize="11"
+                                   Margin="0,5,0,0"/>
+
+                    </StackPanel>
+
+                </Border>
+
+            </Grid>
+
+        </Border>
+
+        <!-- ================= MAIN ================= -->
+
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="72"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- HEADER -->
+            <Border Background="White"
+                    BorderBrush="#E1E7EE"
+                    BorderThickness="0,0,0,1">
+
+                <Grid Margin="25,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Width="420"
+                            Height="38"
+                            HorizontalAlignment="Left"
+                            Background="#F4F7FA"
+                            BorderBrush="#DCE4EC"
+                            BorderThickness="1"
+                            CornerRadius="7">
+
+                        <TextBlock Text="🔍   Search products, customers, orders..."
+                                   Foreground="#83909C"
+                                   VerticalAlignment="Center"
+                                   Margin="14,0"/>
+
+                    </Border>
+
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+
+                        <Border Background="#EEF6FF"
+                                CornerRadius="7"
+                                Padding="13,8"
+                                Margin="0,0,12,0">
+                            <TextBlock Text="🔔  Notifications"/>
+                        </Border>
+
+                        <Border Background="#F3F6F9"
+                                CornerRadius="7"
+                                Padding="13,8">
+                            <TextBlock Text="👤  Admin  ▼"
+                                       FontWeight="SemiBold"/>
+                        </Border>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Border>
+
+            <!-- DASHBOARD -->
+            <ScrollViewer Grid.Row="1"
+                          VerticalScrollBarVisibility="Auto">
+
+                <StackPanel Margin="25">
+
+                    <!-- TITLE -->
+                    <Grid Margin="0,0,0,20">
+
+                        <StackPanel>
+                            <TextBlock Text="Dashboard"
+                                       FontSize="28"
+                                       FontWeight="Bold"
+                                       Foreground="#172B3A"/>
+
+                            <TextBlock Text="Welcome back. Here's what's happening with MUICIN today."
+                                       Foreground="#7C8994"
+                                       Margin="0,5,0,0"/>
+                        </StackPanel>
+
+                        <Button Content="+  New Sale (POS)"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Width="155"
+                                Height="42"
+                                Background="#1677E8"
+                                Foreground="White"
+                                BorderThickness="0"
+                                FontWeight="SemiBold"/>
+
+                    </Grid>
+
+                    <!-- KPI CARDS -->
+                    <Grid Margin="0,0,0,18">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0"
+                                Style="{StaticResource Card}"
+                                Margin="0,0,10,0">
+                            <StackPanel>
+                                <TextBlock Text="TOTAL PRODUCTS"
+                                           Foreground="#82909B"
+                                           FontSize="11"/>
+                                <TextBlock Text="1,247"
+                                           FontSize="26"
+                                           FontWeight="Bold"
+                                           Margin="0,7,0,0"/>
+                                <TextBlock Text="▲ 32 this month"
+                                           Foreground="#20A05A"
+                                           FontSize="11"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Grid.Column="1"
+                                Style="{StaticResource Card}"
+                                Margin="5,0">
+                            <StackPanel>
+                                <TextBlock Text="TOTAL STOCK VALUE"
+                                           Foreground="#82909B"
+                                           FontSize="11"/>
+                                <TextBlock Text="Rs. 5,480,320"
+                                           FontSize="25"
+                                           FontWeight="Bold"
+                                           Margin="0,7,0,0"/>
+                                <TextBlock Text="Across all locations"
+                                           Foreground="#82909B"
+                                           FontSize="11"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Grid.Column="2"
+                                Style="{StaticResource Card}"
+                                Margin="5,0">
+                            <StackPanel>
+                                <TextBlock Text="TODAY'S SALES"
+                                           Foreground="#82909B"
+                                           FontSize="11"/>
+                                <TextBlock Text="Rs. 86,450"
+                                           FontSize="25"
+                                           FontWeight="Bold"
+                                           Margin="0,7,0,0"/>
+                                <TextBlock Text="▲ 12.8%"
+                                           Foreground="#20A05A"
+                                           FontSize="11"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Grid.Column="3"
+                                Style="{StaticResource Card}"
+                                Margin="10,0,0,0">
+                            <StackPanel>
+                                <TextBlock Text="PENDING ORDERS"
+                                           Foreground="#82909B"
+                                           FontSize="11"/>
+                                <TextBlock Text="23"
+                                           FontSize="26"
+                                           FontWeight="Bold"
+                                           Margin="0,7,0,0"/>
+                                <TextBlock Text="5 need attention"
+                                           Foreground="#D84949"
+                                           FontSize="11"/>
+                            </StackPanel>
+                        </Border>
+
+                    </Grid>
+
+                    <!-- MAIN ROW -->
+                    <Grid Margin="0,0,0,18">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- SALES OVERVIEW -->
+                        <Border Grid.Column="0"
+                                Style="{StaticResource Card}"
+                                Margin="0,0,10,0"
+                                Height="265">
+
+                            <Grid>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Sales Overview"
+                                           FontSize="17"
+                                           FontWeight="SemiBold"/>
+
+                                <Grid Grid.Row="1"
+                                      Margin="0,20,0,0">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Canvas>
+
+                                        <Line X1="20" Y1="150"
+                                              X2="760" Y2="150"
+                                              Stroke="#E6ECF2"/>
+
+                                        <Line X1="20" Y1="105"
+                                              X2="760" Y2="105"
+                                              Stroke="#E6ECF2"/>
+
+                                        <Line X1="20" Y1="60"
+                                              X2="760" Y2="60"
+                                              Stroke="#E6ECF2"/>
+
+                                        <Polyline
+                                            Points="20,145 80,120 140,132 200,92 260,110 320,75 380,84 440,48 500,70 560,52 620,88 680,66 740,82"
+                                            Stroke="#1677E8"
+                                            StrokeThickness="3"
+                                            Fill="Transparent"/>
+
+                                    </Canvas>
+
+                                    <TextBlock Grid.Row="1"
+                                               Text="Jan        Feb        Mar        Apr        May        Jun        Jul        Aug        Sep        Oct        Nov        Dec"
+                                               Foreground="#84919D"
+                                               FontSize="10"/>
+
+                                </Grid>
+
+                            </Grid>
+
+                        </Border>
+
+                        <!-- QUICK ACTIONS -->
+                        <Border Grid.Column="1"
+                                Style="{StaticResource Card}"
+                                Margin="10,0,0,0">
+
+                            <StackPanel>
+
+                                <TextBlock Text="Quick Actions"
+                                           FontSize="17"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,8"/>
+
+                                <Button Style="{StaticResource ActionButton}"
+                                        Content="+  New Sale (POS)"/>
+
+                                <Button Style="{StaticResource ActionButton}"
+                                        Content="+  Add Product"/>
+
+                                <Button Style="{StaticResource ActionButton}"
+                                        Content="+  New Purchase"/>
+
+                                <Button Style="{StaticResource ActionButton}"
+                                        Content="+  Add Customer"/>
+
+                                <Button Style="{StaticResource ActionButton}"
+                                        Content="+  Add Employee"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                    </Grid>
+
+                    <!-- LOWER ROW -->
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- TOP PRODUCTS -->
+                        <Border Grid.Column="0"
+                                Style="{StaticResource Card}"
+                                Margin="0,0,10,0">
+
+                            <StackPanel>
+
+                                <TextBlock Text="Top Selling Products"
+                                           FontSize="16"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,15"/>
+
+                                <TextBlock Text="Vitamin C Facial Kit                     32"/>
+                                <Separator Margin="0,9"/>
+                                <TextBlock Text="Ginger Oil Shampoo                      30"/>
+                                <Separator Margin="0,9"/>
+                                <TextBlock Text="9-in-1 Makeup Kit                        23"/>
+                                <Separator Margin="0,9"/>
+                                <TextBlock Text="Rose Toner                               19"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                        <!-- LOW STOCK -->
+                        <Border Grid.Column="1"
+                                Style="{StaticResource Card}"
+                                Margin="5,0">
+
+                            <StackPanel>
+
+                                <TextBlock Text="Low Stock Alert"
+                                           FontSize="16"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,15"/>
+
+                                <TextBlock Text="Tea Tree Facial Kit                   5 pcs"
+                                           Foreground="#D84949"/>
+                                <Separator Margin="0,9"/>
+
+                                <TextBlock Text="Rice Serum                            8 pcs"
+                                           Foreground="#D84949"/>
+                                <Separator Margin="0,9"/>
+
+                                <TextBlock Text="Lip Gloss - Flirty                   12 pcs"/>
+                                <Separator Margin="0,9"/>
+
+                                <TextBlock Text="Retinol Cream                         6 pcs"
+                                           Foreground="#D84949"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                        <!-- STAFF -->
+                        <Border Grid.Column="2"
+                                Style="{StaticResource Card}"
+                                Margin="10,0,0,0">
+
+                            <StackPanel>
+
+                                <TextBlock Text="Team Status"
+                                           FontSize="16"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,15"/>
+
+                                <TextBlock Text="●  Ahsan      Manager"
+                                           Foreground="#159447"/>
+
+                                <TextBlock Text="     Online • 1h 22m"
+                                           Foreground="#89949E"
+                                           FontSize="11"
+                                           Margin="0,2,0,10"/>
+
+                                <TextBlock Text="●  Samad      Accounts"
+                                           Foreground="#159447"/>
+
+                                <TextBlock Text="     Online • 48m"
+                                           Foreground="#89949E"
+                                           FontSize="11"
+                                           Margin="0,2,0,10"/>
+
+                                <TextBlock Text="○  Saboor     Inventory"
+                                           Foreground="#77828B"/>
+
+                                <TextBlock Text="     Last seen yesterday"
+                                           Foreground="#89949E"
+                                           FontSize="11"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                    </Grid>
+
+                </StackPanel>
+
+            </ScrollViewer>
+
+        </Grid>
+
+        <!-- ================= MAIN CONTENT AREA (TOP BAR + FRAME) ================= -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- TOP BAR -->
+            <Border Grid.Row="0" Background="White" BorderBrush="#E6EEF8" BorderThickness="0,0,0,1" Padding="10">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                        <Button x:Name="BackButton" Content="← Back" Width="80" Margin="0,0,8,0" Click="BackButton_Click" IsEnabled="False"/>
+                        <Button x:Name="UndoButton" Content="↶ Undo" Width="80" Margin="0,0,8,0" Click="UndoButton_Click" IsEnabled="False"/>
+                        <TextBlock x:Name="CurrentPageTitle" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="#1F2937"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                        <!-- placeholder for notifications/user -->
+                        <TextBlock Text="Administrator" VerticalAlignment="Center" Foreground="#1F2937"/>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+
+            <!-- NAVIGATION FRAME -->
+            <Frame x:Name="MainContentFrame" Grid.Row="1" NavigationUIVisibility="Hidden" />
+        </Grid>
+
+    </Grid>
+
+</Window>

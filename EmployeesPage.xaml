@@ -1,0 +1,8 @@
+<Page x:Class="MUICIN_INVENT_V3.EmployeesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="EmployeesPage">
+    <Grid>
+        <TextBlock Text="Employees" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" />
+    </Grid>
+</Page>

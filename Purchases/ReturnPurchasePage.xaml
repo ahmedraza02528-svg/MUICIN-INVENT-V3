@@ -1,0 +1,29 @@
+<Page x:Class="MUICIN_INVENT_V3.Purchases.ReturnPurchasePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="#F5F7FB">
+
+    <Grid Margin="30">
+        <StackPanel>
+            <TextBlock Text="Return Purchase Item" FontSize="20" FontWeight="Bold"/>
+
+            <Border Background="White" Padding="12" CornerRadius="8" Margin="0,8,0,0">
+                <StackPanel>
+                    <TextBlock Text="Select Line" FontWeight="SemiBold"/>
+                    <ComboBox x:Name="LineComboBox" DisplayMemberPath="ProductName" Height="34" Margin="0,6,0,0"/>
+
+                    <TextBlock Text="Return Quantity" FontWeight="SemiBold" Margin="0,8,0,0"/>
+                    <TextBox x:Name="ReturnQtyTextBox" Height="34" Margin="0,6,0,0" Text="1"/>
+
+                    <TextBlock Text="Reason" FontWeight="SemiBold" Margin="0,8,0,0"/>
+                    <TextBox x:Name="ReasonTextBox" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
+                </StackPanel>
+            </Border>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
+                <Button Content="Cancel" Width="120" Click="Cancel_Click"/>
+                <Button Content="Return" Width="120" Margin="8,0,0,0" Background="#1677E8" Foreground="White" Click="Return_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
